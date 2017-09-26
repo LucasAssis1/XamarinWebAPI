@@ -14,6 +14,5 @@ namespace XamarinWebAPI.Interfaces
         UserModel ReadUser(Guid Id);
         void UpdatePost(Guid Id, T obj);
         Boolean DeleteGet(Guid Id);
-        Boolean DeletePost(Guid Id, T obj);
     }
 }

@@ -7,7 +7,6 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using XamarinWebAPI.DatabaseNH;
-//using System.Web.Mvc;
 using XamarinWebAPI.Interfaces;
 using XamarinWebAPI.Models;
 
@@ -59,13 +58,6 @@ namespace XamarinWebAPI.Controllers
         public Boolean DeleteGet(Guid id)
         {
             return _databaseMyband.DeleteGet(id);
-        }
-        //Exclui os dados do usuario
-        [HttpDelete]
-        public Boolean Delete(Guid id,[FromBody]UserModel user)
-        {
-            user.ID = id;
-            return _databaseMyband.DeletePost(id,user);
         }
     }
 }

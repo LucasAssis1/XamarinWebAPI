@@ -50,12 +50,6 @@ namespace XamarinWebAPI.Models
             userRepo.UpdateGet(Id);
         }
 
-        public Boolean DeletePost(Guid Id, UserModel user)
-        {
-            var result = userRepo.DeletePost(Id,user);
-            return result;
-        }
-
         public Boolean DeleteGet(Guid Id)
         {
             return userRepo.DeleteGet(Id);

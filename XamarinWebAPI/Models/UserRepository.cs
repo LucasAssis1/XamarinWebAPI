@@ -6,16 +6,17 @@ using System.Web;
 using XamarinWebAPI.DatabaseNH;
 using XamarinWebAPI.Interfaces;
 using NHibernate.Linq;
+using XamarinWebAPI.Models;
 
 namespace XamarinWebAPI.Models
 {
-    public class UserRepository 
+    public class UserRepository
     {
         public IList<UserModel> IndexListUser()
         {
             var session = NHibernateHelper.OpenSession();
             return session.Query<UserModel>().ToList();
-            
+
         }
         public void Create(UserModel user)
         {
@@ -76,29 +77,15 @@ namespace XamarinWebAPI.Models
         }
         public void UpdateGet(int Id)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
-            {
-                var users = session.Get<UserModel>(Id);
-            }
-        }
-        public Boolean DeletePost(Guid Id, UserModel user)
-        {
             try
             {
                 using (ISession session = NHibernateHelper.OpenSession())
                 {
-                    using (ITransaction transaction = session.BeginTransaction())
-                    {
-                        session.Delete("USUARIO");
-                        transaction.Commit();
-
-                        return true;
-                    }
+                    var users = session.Get<UserModel>(Id);
                 }
             }
             catch (Exception)
             {
-
                 throw new ArgumentException("Can't delete user method POST!");
             }
         }

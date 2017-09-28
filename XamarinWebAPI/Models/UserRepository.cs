@@ -36,11 +36,11 @@ namespace XamarinWebAPI.Models
                 throw new ArgumentNullException("null user");
             }
         }
-        public UserModel Read(Guid id)
+        public UserModel Read(Guid Id)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                var user = session.Get<UserModel>(id);
+                var user = session.Get<UserModel>(Id);
                 return user;
             }
         }
@@ -84,6 +84,7 @@ namespace XamarinWebAPI.Models
                     var users = session.Get<UserModel>(Id);
                 }
             }
+            
             catch (Exception)
             {
                 throw new ArgumentException("Can't delete user method POST!");
@@ -102,5 +103,19 @@ namespace XamarinWebAPI.Models
                 return true;
             }
         }
+        /*public UserModel FindbyName(string name, string password)
+        {
+            try
+            {
+                using (ISession session = NHibernateHelper.OpenSession())
+                {
+                    return (from e in session.Query<UserModel>() where e.Name.Like(name) && e.Password.Like(password) select e).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }*/
     }
 }

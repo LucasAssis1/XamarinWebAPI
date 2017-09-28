@@ -10,7 +10,6 @@ namespace XamarinWebAPI.Models
         public virtual Guid ID { get; set; }
         public virtual String Email { get; set; }
         public virtual String Name { get; set; }
-        //public virtual String UserName { get; set; }
         public virtual String Password { get; set; }
         public virtual String State { get; set; }
         public virtual String City { get; set; }

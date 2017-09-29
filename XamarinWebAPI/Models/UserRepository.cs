@@ -103,19 +103,19 @@ namespace XamarinWebAPI.Models
                 return true;
             }
         }
-        /*public UserModel FindbyName(string name, string password)
+        public UserModel FindbyName(string name, string password)
         {
             try
             {
                 using (ISession session = NHibernateHelper.OpenSession())
                 {
-                    return (from e in session.Query<UserModel>() where e.Name.Like(name) && e.Password.Like(password) select e).FirstOrDefault();
+                    return (from e in session.Query<UserModel>() where e.Name.Equals(name) && e.Password.Equals(password) select e).FirstOrDefault();
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-        }*/
+        }
     }
 }

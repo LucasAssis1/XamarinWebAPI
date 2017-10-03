@@ -59,6 +59,5 @@ namespace XamarinWebAPI.Models
         {
             return userRepo.FindbyName(name,password);
         }
-
     }
 }

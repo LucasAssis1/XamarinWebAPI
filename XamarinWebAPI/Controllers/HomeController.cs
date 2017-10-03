@@ -21,15 +21,15 @@ namespace XamarinWebAPI.Controllers
         {
             _databaseMyband = new UserService();
         }
-
-        /*[HttpGet]
+   
+        [HttpGet]
         public IList<UserModel> List()
         {
             var listUser = _databaseMyband.SelectAll;
             return listUser;
-        }*/
+        }
         //Busca um usuário
-        /*[HttpGet]
+        [HttpGet]
         public UserModel GetUser(Guid Id)
         {
             var user = _databaseMyband.Read(Id);
@@ -39,7 +39,7 @@ namespace XamarinWebAPI.Controllers
                 throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
             }
             return user;
-        }*/
+        }
         //Insere um usuário
         [HttpPost]
         public void Post([FromBody]UserModel user)

@@ -11,8 +11,9 @@ namespace XamarinWebAPI.Interfaces
     {
         IList<T> SelectAll { get; }
         void Create(T obj);
-        UserModel ReadUser(Guid Id);
+        T Read(Guid Id);
         void UpdatePost(Guid Id, T obj);
         Boolean DeleteGet(Guid Id);
+        T FindByName(string name, string password);
     }
 }

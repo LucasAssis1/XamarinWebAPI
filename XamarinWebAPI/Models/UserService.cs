@@ -33,10 +33,10 @@ namespace XamarinWebAPI.Models
         {
             userRepo.Create(user);
         }
-        /*private bool GetLogin(string username, string password)
+        public UserModel GetLogin(string username, string password)
         {
-
-        }*/
+            return userRepo.GetLogin(username, password);
+        }
         public UserModel ReadUser(Guid id)
         {
             return userRepo.Read(id);

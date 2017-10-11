@@ -36,7 +36,7 @@ namespace XamarinWebAPI.Models
                 throw new ArgumentNullException("null user");
             }
         }
-        /*public bool GetLogin(string username, string password)
+        public UserModel GetLogin(string username, string password)
         {
             try
             {
@@ -44,11 +44,18 @@ namespace XamarinWebAPI.Models
                 {
                     using (ITransaction transaction = session.BeginTransaction())
                     {
-                        session.CreateSQLQuery("SELECT " )
+                        string sql = "SELECT * FROM USUARIO WHERE name = " + username + " AND password = " + password;
+
+                        IList<UserModel> user = session.QueryOver<UserModel>().Where(u => u.Name == username).And(u => u.Password == password).List();
+                        return user[0];
                     }
                 }
             }
-        }*/
+            catch (Exception)
+            {
+                throw new ArgumentException("Can't Log In");
+            }
+        }
         public UserModel Read(Guid id)
         {
             using (ISession session = NHibernateHelper.OpenSession())

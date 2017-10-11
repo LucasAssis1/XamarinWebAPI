@@ -15,5 +15,6 @@ namespace XamarinWebAPI.Interfaces
         UserModel ReadUser(Guid Id);
         void UpdatePost(Guid Id, T obj);
         Boolean DeleteGet(Guid Id);
+        T FindByName(string name, string password);
     }
 }

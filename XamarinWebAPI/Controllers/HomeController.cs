@@ -21,7 +21,7 @@ namespace XamarinWebAPI.Controllers
         {
             _databaseMyband = new UserService();
         }
-
+   
         [HttpGet]
         public IList<UserModel> List()
         {
@@ -45,9 +45,9 @@ namespace XamarinWebAPI.Controllers
 
         //Busca um usuário
         [HttpGet]
-        public UserModel GetUser(Guid id)
+        public UserModel GetUser(Guid Id)
         {
-            var user = _databaseMyband.ReadUser(id);
+            var user = _databaseMyband.Read(Id);
             
             if(user == null)
             {
@@ -73,6 +73,12 @@ namespace XamarinWebAPI.Controllers
         public Boolean DeleteGet(Guid id)
         {
             return _databaseMyband.DeleteGet(id);
+        }
+
+        [HttpGet]
+        public UserModel FindByName(String name,String password)
+        {
+            return _databaseMyband.FindByName(name, password);
         }
     }
 }

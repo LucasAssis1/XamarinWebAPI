@@ -11,15 +11,15 @@ namespace XamarinWebAPI.Database
     {
         public UserMap()
         {
-            Id(x => x.ID);
-            Map(x => x.Email);
-            Map(x => x.Name);
-            Map(x => x.Password);
-            Map(x => x.State);
-            Map(x => x.City);
-            Map(x => x.Phone);
-            Map(x => x.About);
-            Map(x => x.Photo);
+            Id(x => x.ID).Not.Nullable();
+            Map(x => x.Email).Length(50).Nullable();
+            Map(x => x.Name).Length(50).Not.Nullable();
+            Map(x => x.Password).Length(30).Not.Nullable();
+            Map(x => x.State).Length(2).Not.Nullable();
+            Map(x => x.City).Length(20).Not.Nullable();
+            Map(x => x.Phone).Length(11).Not.Nullable();
+            Map(x => x.About).Length(300).Nullable();
+            Map(x => x.Photo).Nullable();
             Table("USUARIO");
         }
     }

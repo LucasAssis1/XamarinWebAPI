@@ -39,7 +39,7 @@ namespace XamarinWebAPI.Models
         }
         public UserModel ReadUser(Guid id)
         {
-            return userRepo.Read(id);
+            return userRepo.Read(Id);
         }
 
         public void UpdatePost(Guid Id, UserModel user)
@@ -55,6 +55,11 @@ namespace XamarinWebAPI.Models
         public Boolean DeleteGet(Guid Id)
         {
             return userRepo.DeleteGet(Id);
+        }
+
+        public UserModel FindByName(string name, string password)
+        {
+            return userRepo.FindbyName(name,password);
         }
     }
 }

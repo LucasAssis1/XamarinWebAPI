@@ -36,6 +36,19 @@ namespace XamarinWebAPI.Models
                 throw new ArgumentNullException("null user");
             }
         }
+        /*public bool GetLogin(string username, string password)
+        {
+            try
+            {
+                using (ISession session = NHibernateHelper.OpenSession())
+                {
+                    using (ITransaction transaction = session.BeginTransaction())
+                    {
+                        session.CreateSQLQuery("SELECT " )
+                    }
+                }
+            }
+        }*/
         public UserModel Read(Guid id)
         {
             using (ISession session = NHibernateHelper.OpenSession())

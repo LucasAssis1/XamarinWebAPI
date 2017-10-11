@@ -39,7 +39,7 @@ namespace XamarinWebAPI.Models
         }
         public UserModel ReadUser(Guid id)
         {
-            return userRepo.Read(Id);
+            return userRepo.Read(id);
         }
 
         public void UpdatePost(Guid Id, UserModel user)

@@ -44,8 +44,6 @@ namespace XamarinWebAPI.Models
                 {
                     using (ITransaction transaction = session.BeginTransaction())
                     {
-                        string sql = "SELECT * FROM USUARIO WHERE name = " + username + " AND password = " + password;
-
                         IList<UserModel> user = session.QueryOver<UserModel>().Where(u => u.Name == username).And(u => u.Password == password).List();
                         return user[0];
                     }

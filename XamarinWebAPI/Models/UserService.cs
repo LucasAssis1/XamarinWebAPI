@@ -17,7 +17,6 @@ namespace XamarinWebAPI.Models
         {
             InitializeData();
         }
-
         private IList<UserModel> InitializeData()
         {
             _users = userRepo.IndexListUser();
@@ -34,8 +33,11 @@ namespace XamarinWebAPI.Models
         {
             userRepo.Create(user);
         }
-
-        public UserModel Read(Guid Id)
+        public UserModel GetLogin(string username, string password)
+        {
+            return userRepo.GetLogin(username, password);
+        }
+        public UserModel ReadUser(Guid id)
         {
             return userRepo.Read(Id);
         }

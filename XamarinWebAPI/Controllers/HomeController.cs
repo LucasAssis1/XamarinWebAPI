@@ -28,6 +28,21 @@ namespace XamarinWebAPI.Controllers
             var listUser = _databaseMyband.SelectAll;
             return listUser;
         }
+        [HttpGet]
+        public bool GetLogin(string username, string password)
+        {
+            var user = _databaseMyband.GetLogin(username, password);
+
+            if (user != null)
+            {
+                if(user.Name == username && user.Password == password)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         //Busca um usuário
         [HttpGet]
         public UserModel GetUser(Guid Id)

@@ -47,7 +47,7 @@ namespace XamarinWebAPI.Controllers
         [HttpGet]
         public UserModel GetUser(Guid Id)
         {
-            var user = _databaseMyband.Read(Id);
+            var user = _databaseMyband.ReadUser(Id);
             
             if(user == null)
             {

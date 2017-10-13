@@ -37,15 +37,15 @@ namespace XamarinWebAPI.Models
             }
         }
 
-        public UserModel GetLogin(string username, string password)
+        public UserModel PostLogin(UserLoginModel userLogin)
         {
-            //try
-            //{
+            try
+            {
                 using (ISession session = NHibernateHelper.OpenSession())
                 {
                     using (ITransaction transaction = session.BeginTransaction())
-                    {
-                        IList<UserModel> user = session.QueryOver<UserModel>().Where(u => u.Name == username).And(u => u.Password == password).List();
+                    {                                                                //fix to "u.Email" later when JTW is working 
+                        IList<UserModel> user = session.QueryOver<UserModel>().Where(u => u.Name == userLogin.EmailLogin).And(u => u.Password == userLogin.PasswordLogin).List();
                         if (user.Count() != 0)
                         {
                             return user[0];
@@ -53,11 +53,11 @@ namespace XamarinWebAPI.Models
                         return null;
                     }
                 }
-            /*}
+            }
             catch (Exception)
             {
                 throw new ArgumentException("Can't Log In");
-            }*/
+            }
         }
 
         public UserModel Read(Guid Id)

@@ -206,6 +206,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DatabaseNH\NHibernateHelper.cs" />
     <Compile Include="Interfaces\IDatabaseMyBand.cs" />
+    <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Models\UserMap.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

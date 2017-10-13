@@ -33,9 +33,9 @@ namespace XamarinWebAPI.Models
         {
             userRepo.Create(user);
         }
-        public UserModel GetLogin(string username, string password)
+        public UserModel PostLogin(UserLoginModel userLogin)
         {
-            return userRepo.GetLogin(username, password);
+            return userRepo.PostLogin(userLogin);
         }
         public UserModel ReadUser(Guid id)
         {

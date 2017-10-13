@@ -12,6 +12,7 @@ using XamarinWebAPI.Models;
 
 namespace XamarinWebAPI.Controllers
 {
+    [RoutePrefix("api/Home")]
     public class HomeController : ApiController
     {
         private ISession session = NHibernateHelper.OpenSession();
@@ -28,14 +29,16 @@ namespace XamarinWebAPI.Controllers
             var listUser = _databaseMyband.SelectAll;
             return listUser;
         }
-        [HttpGet]
-        public bool GetLogin(string username, string password)
+
+        [HttpPost]
+        [Route("postlogin")]
+        public bool PostLogin([FromBody]UserLoginModel userLogin)
         {
-            var user = _databaseMyband.GetLogin(username, password);
+            var user = _databaseMyband.PostLogin(userLogin);
 
             if (user != null)
-            {
-                if(user.Name == username && user.Password == password)
+            {   //fix to "user.Email" later when everything is working
+                if (user.Name == userLogin.EmailLogin && user.Password == userLogin.PasswordLogin)
                 {
                     return true;
                 }
@@ -55,12 +58,15 @@ namespace XamarinWebAPI.Controllers
             }
             return user;
         }
+
         //Insere um usuário
         [HttpPost]
+        [Route("post")]
         public void Post([FromBody]UserModel user)
         {
             _databaseMyband.Create(user);
         }
+
         //Atualiza um usuário, update
         [HttpPut]
         public void Put(Guid id,[FromBody]UserModel user)
@@ -68,6 +74,7 @@ namespace XamarinWebAPI.Controllers
             user.ID = id;
             _databaseMyband.UpdatePost(id,user);
         }
+
         //Deleta um usuário. Confirmar a exclusão do "fulano"
         [HttpDelete]
         public Boolean DeleteGet(Guid id)

@@ -12,6 +12,29 @@ namespace XamarinWebAPI.Models
 {
     public class UserRepository
     {
+        public UserModel PostLogin(UserLoginModel userLogin)
+        {
+            try
+            {
+                using (ISession session = NHibernateHelper.OpenSession())
+                {
+                    using (ITransaction transaction = session.BeginTransaction())
+                    {                                                                //fix to "u.Email" later when JWT is working 
+                        IList<UserModel> user = session.QueryOver<UserModel>().Where(u => u.Name == userLogin.EmailLogin).And(u => u.Password == userLogin.PasswordLogin).List();
+                        if (user.Count() != 0)
+                        {
+                            return user[0];
+                        }
+                        return null;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException("Can't Log In");
+            }
+        }
+
         public IList<UserModel> IndexListUser()
         {
             var session = NHibernateHelper.OpenSession();
@@ -36,30 +59,6 @@ namespace XamarinWebAPI.Models
                 throw new ArgumentNullException("null user");
             }
         }
-
-        public UserModel GetLogin(string username, string password)
-        {
-            //try
-            //{
-                using (ISession session = NHibernateHelper.OpenSession())
-                {
-                    using (ITransaction transaction = session.BeginTransaction())
-                    {
-                        IList<UserModel> user = session.QueryOver<UserModel>().Where(u => u.Name == username).And(u => u.Password == password).List();
-                        if (user.Count() != 0)
-                        {
-                            return user[0];
-                        }
-                        return null;
-                    }
-                }
-            /*}
-            catch (Exception)
-            {
-                throw new ArgumentException("Can't Log In");
-            }*/
-        }
-
         public UserModel Read(Guid Id)
         {
             using (ISession session = NHibernateHelper.OpenSession())
@@ -108,7 +107,7 @@ namespace XamarinWebAPI.Models
                     var users = session.Get<UserModel>(Id);
                 }
             }
-            
+
             catch (Exception)
             {
                 throw new ArgumentException("Can't delete user method POST!");

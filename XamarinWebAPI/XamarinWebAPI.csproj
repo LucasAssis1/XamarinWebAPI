@@ -206,13 +206,21 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DatabaseNH\NHibernateHelper.cs" />
     <Compile Include="Interfaces\IDatabaseMyBand.cs" />
-    <Compile Include="Models\UserMap.cs" />
+    <Compile Include="MappingsModels\GenreMap.cs" />
+    <Compile Include="MappingsModels\InstrumentMap.cs" />
+    <Compile Include="MappingsModels\UserInstrumentMap.cs" />
+    <Compile Include="MappingsModels\User_GenreMap.cs" />
+    <Compile Include="Models\GenreModel.cs" />
+    <Compile Include="Models\InstrumentModel.cs" />
+    <Compile Include="Models\UserInstrumentModel.cs" />
+    <Compile Include="MappingsModels\UserMap.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Models\UserRepository.cs" />
-    <Compile Include="Models\UserService.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Models\User_GenreModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

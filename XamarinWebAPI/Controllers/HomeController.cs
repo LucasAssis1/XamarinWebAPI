@@ -31,6 +31,7 @@ namespace XamarinWebAPI.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [Route("postlogin")]
         public bool PostLogin([FromBody]UserLoginModel userLogin)
         {
@@ -62,6 +63,7 @@ namespace XamarinWebAPI.Controllers
         //Insere um usuário
         [HttpPost]
         [Route("post")]
+        [AllowAnonymous]
         public void Post([FromBody]UserModel user)
         {
             _databaseMyband.Create(user);

@@ -71,9 +71,10 @@ namespace XamarinWebAPI.Controllers
         [AllowAnonymous]
         public string Post([FromBody]UserModel user)
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
+            //var tokenHandler = new JwtSecurityTokenHandler();
             var _tokenManager = new JwtManager();
-            HttpResponseMessage response;
+            //HttpResponseMessage response;
+
             _databaseMyband.Create(user);
 
             //create token

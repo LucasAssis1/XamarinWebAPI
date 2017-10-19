@@ -14,7 +14,7 @@ using XamarinWebAPI.JwToken;
 
 namespace XamarinWebAPI.Controllers
 {
-    [RoutePrefix("api/Home")]
+    //[RoutePrefix("api/Home")]
     public class HomeController : ApiController
     {
         private ISession session = NHibernateHelper.OpenSession();
@@ -26,6 +26,7 @@ namespace XamarinWebAPI.Controllers
             _databaseMyband = new UserService();
         }
         
+        [Authorize]
         [HttpGet]
         public IList<UserModel> List()
         {
@@ -74,8 +75,9 @@ namespace XamarinWebAPI.Controllers
             //var tokenHandler = new JwtSecurityTokenHandler();
             var _tokenManager = new JwtManager();
             //HttpResponseMessage response;
-
-            _databaseMyband.Create(user);
+            
+            //não precisa agora
+            //_databaseMyband.Create(user);
 
             //create token
             string token = _tokenManager.GenerateToken(user.Name);

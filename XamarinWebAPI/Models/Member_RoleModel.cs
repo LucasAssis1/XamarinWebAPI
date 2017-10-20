@@ -5,10 +5,10 @@ using System.Web;
 
 namespace XamarinWebAPI.Models
 {
-    public class User_GenreModel
+    public class Member_RoleModel
     {
         public virtual Guid ID { get; set; }
-        public virtual UserModel User { get; set; }
-        public virtual GenreModel Genre { get; set; }
+        public virtual MemberModel Member { get; set; }
+        public virtual RoleModel Function { get; set; }
     }
 }

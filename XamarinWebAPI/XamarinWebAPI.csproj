@@ -302,20 +302,36 @@
     <Compile Include="Interfaces\IDatabaseMyBand.cs" />
     <Compile Include="Interfaces\ISecurityService.cs" />
     <Compile Include="JwToken\JwtManager.cs" />
-    <Compile Include="MappingsModels\GenreMap.cs" />
-    <Compile Include="MappingsModels\InstrumentMap.cs" />
-    <Compile Include="MappingsModels\UserInstrumentMap.cs" />
-    <Compile Include="MappingsModels\User_GenreMap.cs" />
-    <Compile Include="Models\GenreModel.cs" />
-    <Compile Include="Models\IdentityContract.cs" />
-    <Compile Include="Models\InstrumentModel.cs" />
-    <Compile Include="Models\UserInstrumentModel.cs" />
-    <Compile Include="MappingsModels\UserMap.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MappingsModels\BandMap.cs" />
+    <Compile Include="MappingsModels\FollowerMap.cs" />
+    <Compile Include="MappingsModels\GenreMap.cs" />
+    <Compile Include="MappingsModels\Genre_BandMap.cs" />
+    <Compile Include="MappingsModels\InstrumentMap.cs" />
+    <Compile Include="MappingsModels\MemberMap.cs" />
+    <Compile Include="MappingsModels\Member_RoleMap.cs" />
+    <Compile Include="MappingsModels\RatingMap.cs" />
+    <Compile Include="MappingsModels\RoleMap.cs" />
+    <Compile Include="MappingsModels\SongMap.cs" />
+    <Compile Include="MappingsModels\UserMap.cs" />
+    <Compile Include="MappingsModels\User_GenreMap.cs" />
+    <Compile Include="MappingsModels\User_InstrumentMap.cs" />
+    <Compile Include="Models\BandModel.cs" />
+    <Compile Include="Models\FollowerModel.cs" />
+    <Compile Include="Models\GenreModel.cs" />
+    <Compile Include="Models\Genre_BandModel.cs" />
+    <Compile Include="Models\InstrumentModel.cs" />
+    <Compile Include="Models\MemberModel.cs" />
+    <Compile Include="Models\Member_RoleModel.cs" />
+    <Compile Include="Models\RatingModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\SongModel.cs" />
     <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\User_GenreModel.cs" />
+    <Compile Include="Models\User_InstrumentModel.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Security\ClaimsParser.cs" />
     <Compile Include="Security\IIdentityModel.cs" />
@@ -323,7 +339,6 @@
     <Compile Include="Security\SimpleRefreshTokenProvider.cs" />
     <Compile Include="Services\SecurityService.cs" />
     <Compile Include="Services\UserService.cs" />
-    <Compile Include="Models\User_GenreModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

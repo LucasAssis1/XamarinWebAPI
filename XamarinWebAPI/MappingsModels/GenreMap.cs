@@ -11,9 +11,9 @@ namespace XamarinWebAPI.MappingsModels
     {
         public GenreMap()
         {
-            Id(x => x.ID).Not.Nullable();
+            Id(x => x.ID).GeneratedBy.Guid();
             Map(x => x.About).Length(20).Not.Nullable();
-            Table("GENERO");
+            Table("GENRE");
         }
     }
 }

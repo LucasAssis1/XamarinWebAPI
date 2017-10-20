@@ -7,13 +7,14 @@ using XamarinWebAPI.Models;
 
 namespace XamarinWebAPI.MappingsModels
 {
-    public class InstrumentMap : ClassMap<InstrumentModel>
+    public class User_InstrumentMap : ClassMap<User_InstrumentModel>
     {
-        public InstrumentMap()
+        public User_InstrumentMap()
         {
             Id(x => x.ID).GeneratedBy.Guid();
-            Map(x => x.About).Length(20).Not.Nullable();
-            Table("INSTRUMENT");
+            References(x=>x.User).Not.Nullable();
+            References(x=>x.Instrument).Not.Nullable();
+            Table("USER_INSTRUMENT");
         }
     }
 }

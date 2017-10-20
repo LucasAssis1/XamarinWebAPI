@@ -7,13 +7,14 @@ using XamarinWebAPI.Models;
 
 namespace XamarinWebAPI.MappingsModels
 {
-    public class InstrumentMap : ClassMap<InstrumentModel>
+    public class RoleMap : ClassMap<RoleModel>
     {
-        public InstrumentMap()
+        public RoleMap()
         {
             Id(x => x.ID).GeneratedBy.Guid();
-            Map(x => x.About).Length(20).Not.Nullable();
-            Table("INSTRUMENT");
+            Map(x => x.Description).Length(20).Not.Nullable();
+            Table("ROLE");
         }
+
     }
 }

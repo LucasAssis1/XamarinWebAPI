@@ -16,17 +16,17 @@ namespace XamarinWebAPI.Controllers
     public class HomeController : ApiController
     {
         private ISession session = NHibernateHelper.OpenSession();
-        private readonly IDatabaseMyBand<UserModel> _databaseMyband;
+        private readonly IUserModel _userModel;
 
         public HomeController()
         {
-            _databaseMyband = new UserService();
+            _userModel = new UserService();
         }
    
         [HttpGet]
         public IList<UserModel> List()
         {
-            var listUser = _databaseMyband.SelectAll;
+            var listUser = _userModel.SelectAll;
             return listUser;
         }
 
@@ -34,7 +34,7 @@ namespace XamarinWebAPI.Controllers
         [Route("postlogin")]
         public bool PostLogin([FromBody]UserLoginModel userLogin)
         {
-            var user = _databaseMyband.PostLogin(userLogin);
+            var user = _userModel.PostLogin(userLogin);
 
             if (user != null)
             {   //fix to "user.Email" later when everything is working
@@ -50,7 +50,7 @@ namespace XamarinWebAPI.Controllers
         [HttpGet]
         public UserModel GetUser(Guid Id)
         {
-            var user = _databaseMyband.ReadUser(Id);
+            var user = _userModel.ReadUser(Id);
             
             if(user == null)
             {
@@ -64,7 +64,7 @@ namespace XamarinWebAPI.Controllers
         [Route("post")]
         public void Post([FromBody]UserModel user)
         {
-            _databaseMyband.Create(user);
+            _userModel.Create(user);
         }
 
         //Atualiza um usuário, update
@@ -72,20 +72,20 @@ namespace XamarinWebAPI.Controllers
         public void Put(Guid id,[FromBody]UserModel user)
         {
             user.ID = id;
-            _databaseMyband.UpdatePost(id,user);
+            _userModel.UpdatePost(id,user);
         }
 
         //Deleta um usuário. Confirmar a exclusão do "fulano"
         [HttpDelete]
         public Boolean DeleteGet(Guid id)
         {
-            return _databaseMyband.DeleteGet(id);
+            return _userModel.DeleteGet(id);
         }
 
         [HttpGet]
         public UserModel FindByName(String name,String password)
         {
-            return _databaseMyband.FindByName(name, password);
+            return _userModel.FindByName(name, password);
         }
     }
 }

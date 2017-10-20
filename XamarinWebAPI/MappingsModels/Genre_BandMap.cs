@@ -7,13 +7,14 @@ using XamarinWebAPI.Models;
 
 namespace XamarinWebAPI.MappingsModels
 {
-    public class InstrumentMap : ClassMap<InstrumentModel>
+    public class Genre_BandMap : ClassMap<Genre_BandModel>
     {
-        public InstrumentMap()
+        public Genre_BandMap()
         {
             Id(x => x.ID).GeneratedBy.Guid();
-            Map(x => x.About).Length(20).Not.Nullable();
-            Table("INSTRUMENT");
+            References(x => x.Band).Not.Nullable();
+            References(x => x.Genre).Not.Nullable();
+            Table("BAND_GENRE");
         }
     }
 }

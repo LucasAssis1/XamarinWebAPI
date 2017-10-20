@@ -5,10 +5,10 @@ using System.Web;
 
 namespace XamarinWebAPI.Models
 {
-    public class User_GenreModel
+    public class Genre_BandModel
     {
         public virtual Guid ID { get; set; }
-        public virtual UserModel User { get; set; }
+        public virtual BandModel Band { get; set; }
         public virtual GenreModel Genre { get; set; }
     }
 }

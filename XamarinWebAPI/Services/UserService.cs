@@ -9,7 +9,7 @@ using NHibernate.Linq;
 
 namespace XamarinWebAPI.Models
 {
-    public class UserService : IDatabaseMyBand<UserModel>
+    public class UserService : IUserModel
     {
         private IList<UserModel> _users;
         UserRepository userRepo = new UserRepository();

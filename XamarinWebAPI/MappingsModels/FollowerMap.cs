@@ -7,13 +7,14 @@ using XamarinWebAPI.Models;
 
 namespace XamarinWebAPI.MappingsModels
 {
-    public class InstrumentMap : ClassMap<InstrumentModel>
+    public class FollowerMap : ClassMap<FollowerModel>
     {
-        public InstrumentMap()
+        public FollowerMap()
         {
             Id(x => x.ID).GeneratedBy.Guid();
-            Map(x => x.About).Length(20).Not.Nullable();
-            Table("INSTRUMENT");
+            References(x => x.User);
+            References(x => x.Band);
+            Table("FOLLOWER");
         }
     }
 }

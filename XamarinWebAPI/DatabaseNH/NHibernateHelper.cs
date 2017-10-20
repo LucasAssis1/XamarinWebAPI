@@ -19,11 +19,13 @@ namespace XamarinWebAPI.DatabaseNH
         {
             sessionFactory = Fluently.Configure()
                    .Database(MsSqlConfiguration.MsSql2012
-                     .ConnectionString(x => x.Username("LucasAssis_SQLLogin_1").Password("z2ncixmf1v").Database("MyBands").Server("MyBands.mssql.somee.com"))
-                                .ShowSql()
+                     //.ConnectionString(x => x.Username("LucasAssis_SQLLogin_1").Password("z2ncixmf1v").Database("MyBands").Server("MyBands.mssql.somee.com"))
+                     .ConnectionString(x => x.Username("PROGRAMMERS\\cleiton.barbieri").Database("MYBAND").Server("N174").TrustedConnection())
+                            .ShowSql()
                    )
                   .Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserModel>())
-                  .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(true, true))
+                  //.ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(true, true))
+                  .ExposeConfiguration(cfg => new SchemaExport(cfg).Create(false,true))
                   .BuildSessionFactory();
         } 
 

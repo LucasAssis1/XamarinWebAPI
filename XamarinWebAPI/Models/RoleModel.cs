@@ -5,10 +5,9 @@ using System.Web;
 
 namespace XamarinWebAPI.Models
 {
-    public class UserInstrumentModel
+    public class RoleModel
     {
         public virtual Guid ID { get; set; }
-        public virtual UserModel ID_User { get; set; }
-        public virtual InstrumentModel ID_Instrument { get; set; }
+        public virtual String Description { get; set; }
     }
 }

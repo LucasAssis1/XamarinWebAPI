@@ -11,10 +11,10 @@ namespace XamarinWebAPI.MappingsModels
     {
         public User_GenreMap()
         {
-            Id(x => x.ID).Not.Nullable();
-            References(x => x.ID_User).Not.Nullable();
-            References(x => x.ID_Genre).Not.Nullable();
-            Table("USUARIO_GENERO");
+            Id(x => x.ID).GeneratedBy.Guid();
+            References(x => x.User).Not.Nullable();
+            References(x => x.Genre).Not.Nullable();
+            Table("USER_GENRE");
         }
     }
 }

@@ -7,14 +7,14 @@ using XamarinWebAPI.Models;
 
 namespace XamarinWebAPI.Interfaces
 {
-    public interface IDatabaseMyBand<T> where T : class
+    public interface IUserModel
     {
-        IList<T> SelectAll { get; }
-        void Create(T obj);
+        IList<UserModel> SelectAll { get; }
+        void Create(UserModel user);
         UserModel PostLogin(UserLoginModel userLogin);
         UserModel ReadUser(Guid Id);
-        void UpdatePost(Guid Id, T obj);
+        void UpdatePost(Guid Id, UserModel user);
         Boolean DeleteGet(Guid Id);
-        T FindByName(string name, string password);
+        UserModel FindByName(string name, string password);
     }
 }

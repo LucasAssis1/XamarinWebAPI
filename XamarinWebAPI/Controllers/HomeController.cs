@@ -18,16 +18,16 @@ namespace XamarinWebAPI.Controllers
     public class HomeController : ApiController
     {
         private ISession session = NHibernateHelper.OpenSession();
-        //Alteração Lucas OAuth
-        //private readonly IDatabaseMyBand<UserModel> _databaseMyband;
+
         private readonly IUserModel _userModel;
 
         public HomeController()
         {
             _userModel = new UserService();
         }
-        
-        [Authorize]
+
+        //[Authorize]
+        [AllowAnonymous]
         [HttpGet]
         public IList<UserModel> List()
         {
@@ -79,7 +79,7 @@ namespace XamarinWebAPI.Controllers
             //HttpResponseMessage response;
             
             
-            _databaseMyband.Create(user);
+            _userModel.Create(user);
 
             //create token
             string token = _tokenManager.GenerateToken(user.Name);

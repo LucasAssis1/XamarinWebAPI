@@ -299,12 +299,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DatabaseNH\NHibernateHelper.cs" />
-    <Compile Include="Interfaces\IDatabaseMyBand.cs" />
     <Compile Include="Interfaces\ISecurityService.cs" />
     <Compile Include="JwToken\JwtManager.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Interfaces\IUserModel.cs" />
     <Compile Include="MappingsModels\BandMap.cs" />
     <Compile Include="MappingsModels\FollowerMap.cs" />
@@ -315,7 +311,6 @@
     <Compile Include="MappingsModels\MemberMap.cs" />
     <Compile Include="MappingsModels\Member_RoleMap.cs" />
     <Compile Include="MappingsModels\RatingMap.cs" />
-    <Compile Include="MappingsModels\RoleMap.cs" />
     <Compile Include="MappingsModels\UserMap.cs" />
     <Compile Include="MappingsModels\SongMap.cs" />
     <Compile Include="MappingsModels\User_InstrumentMap.cs" />
@@ -330,8 +325,6 @@
     <Compile Include="Models\Member_RoleModel.cs" />
     <Compile Include="Models\RatingModel.cs" />
     <Compile Include="Models\SongModel.cs" />
-    <Compile Include="Models\User_InstrumentModel.cs" />
-    <Compile Include="MappingsModels\UserMap.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -26,8 +26,8 @@ namespace XamarinWebAPI.Controllers
             _userModel = new UserService();
         }
 
-        //[Authorize]
-        [AllowAnonymous]
+        //[AllowAnonymous]
+        [Authorize]
         [HttpGet]
         public IList<UserModel> List()
         {
@@ -72,20 +72,16 @@ namespace XamarinWebAPI.Controllers
         [HttpPost]
         //[Route("post")]
         [AllowAnonymous]
-        public string Post([FromBody]UserModel user)
+        public void Post([FromBody]UserModel user)
         {
             //var tokenHandler = new JwtSecurityTokenHandler();
-            var _tokenManager = new JwtManager();
+            //var _tokenManager = new JwtManager();
             //HttpResponseMessage response;
-            
             
             _userModel.Create(user);
 
             //create token
-            string token = _tokenManager.GenerateToken(user.Name);
-            
-            return token;
-            _userModel.Create(user);
+            //string token = _tokenManager.GenerateToken(user.Name);
         }
 
         //Atualiza um usuário, update

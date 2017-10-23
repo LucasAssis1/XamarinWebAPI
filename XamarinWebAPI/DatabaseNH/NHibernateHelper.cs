@@ -25,8 +25,8 @@ namespace XamarinWebAPI.DatabaseNH
                             .ShowSql()
                    )
                   .Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserModel>())
-                  //.ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(true, true))
-                  .ExposeConfiguration(cfg => new SchemaExport(cfg).Create(false,true))
+                  .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(true, true))
+                  //.ExposeConfiguration(cfg => new SchemaExport(cfg).Create(false,true))
                   .BuildSessionFactory();
         } 
 

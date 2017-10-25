@@ -23,7 +23,20 @@ namespace XamarinWebAPI.Models
                         IList<UserModel> user = session.QueryOver<UserModel>().Where(u => u.Name == userLogin.EmailLogin).And(u => u.Password == userLogin.PasswordLogin).List();
                         if (user.Count() != 0)
                         {
+                            //var mUser = session.QueryOver<UserModel>()
+                            //              .Fetch(u => u.Instruments)
+                            //              .Eager
+                            //              /*.Fetch(u => u.Members).Eager
+                            //              .Fetch(u => u.Rating).Eager
+                            //              .Fetch(u => u.User_Genre).Eager
+                            //              .Fetch(u => u.Follower).Eager*/
+                            //              .List().Where(u => u.ID == user.First().ID)
+                            //              .FirstOrDefault();
+                            user[0].Follower[0].Band.Rating = null;
+                            user[0].Follower[0].Band.Members = null;
+                            user[0].Follower[0].Band.Followers = null;
                             return user[0];
+                            //user[0].Parent.Child.Parent = null;
                         }
                         return null;
                     }

@@ -35,26 +35,6 @@ namespace XamarinWebAPI.Controllers
             return listUser;
         }
 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[Route("postlogin")]
-        //public bool PostLogin([FromBody]UserLoginModel userLogin)
-        //{
-
-
-        //    var user = _databaseMyband.PostLogin(userLogin);
-
-        //    if (user != null)
-        //    {   //fix to "user.Email" later when everything is working
-        //        if (user.Name == userLogin.EmailLogin && user.Password == userLogin.PasswordLogin)
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
-
-        //Busca um usuário
         [HttpGet]
         [Authorize]
         public UserModel GetUser(Guid Id)
@@ -70,7 +50,6 @@ namespace XamarinWebAPI.Controllers
 
         //Insere um usuário
         [HttpPost]
-        //[Route("post")]
         [AllowAnonymous]
         public void Post([FromBody]UserModel user)
         {

@@ -25,7 +25,8 @@ namespace XamarinWebAPI.Services
 
             if (user == null)
                 return null;
-            
+
+            user.Password = null;
             return user;
         }
     }

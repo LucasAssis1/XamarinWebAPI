@@ -57,9 +57,9 @@ namespace XamarinWebAPI.Models
             return userRepo.DeleteGet(Id);
         }
 
-        public UserModel FindByName(string name, string password)
+        public UserModel FindByName(string name)
         {
-            return userRepo.FindbyName(name,password);
+            return userRepo.FindbyName(name);
         }
     }
 }

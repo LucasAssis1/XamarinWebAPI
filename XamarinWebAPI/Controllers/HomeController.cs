@@ -82,9 +82,9 @@ namespace XamarinWebAPI.Controllers
 
         [HttpGet]
         [Authorize]
-        public UserModel FindByName(String name,String password)
+        public UserModel FindByName(String name)
         {
-            return _userModel.FindByName(name, password);
+            return _userModel.FindByName(name);
         }
     }
 }

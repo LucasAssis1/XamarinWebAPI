@@ -17,7 +17,7 @@ namespace XamarinWebAPI.Security
         {
             var claims = new ClaimsIdentity("Bearer");
             claims.AddClaim(new Claim("sub", model.Email));
-            claims.AddClaim(new Claim(DATA_KEY, JsonConvert.SerializeObject(model)));
+            //claims.AddClaim(new Claim(DATA_KEY, JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling =  ReferenceLoopHandling.Ignore })));
 
             return claims;
         }

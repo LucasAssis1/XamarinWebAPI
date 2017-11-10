@@ -7,6 +7,7 @@ using XamarinWebAPI.DatabaseNH;
 using XamarinWebAPI.Interfaces;
 using NHibernate.Linq;
 using XamarinWebAPI.Models;
+using Newtonsoft.Json;
 
 namespace XamarinWebAPI.Models
 {
@@ -20,23 +21,19 @@ namespace XamarinWebAPI.Models
                 {
                     using (ITransaction transaction = session.BeginTransaction())
                     {                                                                //fix to "u.Email" later when JWT is working 
+
+                        //return JsonConvert.SerializeObject((from e in session.Query<UserModel>() where e.Name.Equals(userLogin.EmailLogin) && e.Password.Equals(userLogin.PasswordLogin) select e).FirstOrDefault(), Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
                         IList<UserModel> user = session.QueryOver<UserModel>().Where(u => u.Name == userLogin.EmailLogin).And(u => u.Password == userLogin.PasswordLogin).List();
                         if (user.Count() != 0)
                         {
-                            //var mUser = session.QueryOver<UserModel>()
-                            //              .Fetch(u => u.Instruments)
-                            //              .Eager
-                            //              /*.Fetch(u => u.Members).Eager
-                            //              .Fetch(u => u.Rating).Eager
-                            //              .Fetch(u => u.User_Genre).Eager
-                            //              .Fetch(u => u.Follower).Eager*/
-                            //              .List().Where(u => u.ID == user.First().ID)
-                            //              .FirstOrDefault();
-                            user[0].Follower[0].Band.Rating = null;
-                            user[0].Follower[0].Band.Members = null;
-                            user[0].Follower[0].Band.Followers = null;
+                            //var jUser = JsonConvert.SerializeObject(user, Formatting.Indented, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
+                            //return jUser;
+                            user[0].Instruments = null;
+                            user[0].Members = null;
+                            user[0].Rating = null;
+                            user[0].User_Genre = null;
+                            user[0].Follower = null;
                             return user[0];
-                            //user[0].Parent.Child.Parent = null;
                         }
                         return null;
                     }
@@ -139,13 +136,19 @@ namespace XamarinWebAPI.Models
                 return true;
             }
         }
-        public UserModel FindbyName(string name, string password)
+        public UserModel FindbyName(string name)
         {
             try
             {
                 using (ISession session = NHibernateHelper.OpenSession())
                 {
-                    return (from e in session.Query<UserModel>() where e.Name.Equals(name) && e.Password.Equals(password) select e).FirstOrDefault();
+                    var user = (from e in session.Query<UserModel>() where e.Name.Equals(name) select e).FirstOrDefault();
+                    user.Follower = null;
+                    user.Instruments = null;
+                    user.Members = null;
+                    user.Rating = null;
+                    user.User_Genre = null;
+                    return user;
                 }
             }
             catch (Exception ex)
